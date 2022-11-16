@@ -26,7 +26,7 @@ from django.db.models import Sum
 from celery import shared_task
 
 
-@app.task(bind=True)
+@shared_task(bind=True)
 def calculateAvrageRate(self,contentID):
     instnce = rateModel.objects.filter(content__id = contentID)
     numberOfRates = instnce.count()
